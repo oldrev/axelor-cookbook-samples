@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<metadata>
+  <groupId>com.axelor</groupId>
+  <artifactId>axelor-web</artifactId>
+  <versioning>
+    <latest>5.3.0-SNAPSHOT</latest>
+    <versions>
+      <version>5.3.0-SNAPSHOT</version>
+    </versions>
+    <lastUpdated>20200302052351</lastUpdated>
+  </versioning>
+</metadata>
