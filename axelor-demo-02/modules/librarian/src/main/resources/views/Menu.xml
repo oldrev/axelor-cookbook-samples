@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
+
+    <menuitem name="menu-librarian" title="图书管理系统" icon-background="#336699" />
+    <menuitem name="menu-book" title="图书管理" parent="menu-librarian" action="action.librarian.books" />
+
+    <action-view name="action.librarian.books" title="图书管理" model="mingshu.librarian.db.Book" >
+        <view type="grid" name="book-grid" />
+        <view type="form" name="book-form" />
+    </action-view>
+
+</object-views>

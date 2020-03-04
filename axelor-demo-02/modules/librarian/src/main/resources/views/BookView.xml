@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
+
+    <grid name="book-grid" title="书籍列表" model="mingshu.librarian.db.Book">
+        <field name="name" />
+        <field name="isbn" />
+        <field name="publishDate" />
+    </grid>
+
+    <form name="book-form" title="书籍表单" model="mingshu.librarian.db.Book">
+        <panel title="书籍基本信息">
+            <field name="name" />
+            <field name="isbn" />
+            <field name="publishDate" />
+            <field name="price" />
+            <field name="summary" />
+        </panel>
+    </form>
+
+</object-views>

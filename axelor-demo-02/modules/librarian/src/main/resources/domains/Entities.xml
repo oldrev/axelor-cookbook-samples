@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_5.3.xsd">
+
+    <module name="librarian" package="mingshu.librarian.db" />
+
+
+    <entity name="Book" table="BOOK" repository="none">
+        <string name="name" required="true" namecolumn="true" title="书名" />
+        <string name="isbn" required="true" title="ISBN" />
+        <string name="summary" required="false" title="简介" />
+        <date name="publishDate" required="true" title="出版日期" />
+        <decimal name="price" required="true" title="价格"  precision="20" scale="2" />
+    </entity>
+
+
+</domain-models>

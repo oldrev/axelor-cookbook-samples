@@ -1,0 +1,12 @@
+apply plugin: 'com.axelor.app-module'
+
+axelor {
+    title "Library Management System"
+    version "0.1.0"
+    description ""
+    removable = true
+}
+
+dependencies {
+
+}

@@ -52,5 +52,5 @@ allprojects {
 }
 
 dependencies {
-    //compile project(":modules:sales")
+    compile project(":modules:librarian")
 }
