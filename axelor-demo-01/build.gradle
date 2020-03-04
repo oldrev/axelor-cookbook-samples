@@ -3,7 +3,7 @@ buildscript {
 
         // 这行放在上面，优先使用本地 `axelor-mvn-repo` 目录里提供的汉化过的 Axelor 框架
         maven {
-            url uri("${projectDir}/./axelor-mvn-repo")
+            url uri("${projectDir}/../axelor-mvn-repo")
         }
 
 
