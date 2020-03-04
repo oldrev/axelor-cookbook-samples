@@ -1,0 +1,56 @@
+buildscript {
+    ext.repos = {
+
+        // 这行放在上面，优先使用本地 `axelor-mvn-repo` 目录里提供的汉化过的 Axelor 框架
+        maven {
+            url uri("${projectDir}/../axelor-mvn-repo")
+        }
+
+
+        // 最优先检查本地 Maven 仓库
+        mavenLocal()
+
+        // 公共仓库优先使用阿里云的
+        maven { url 'https://maven.aliyun.com/repository/central' }
+        maven { url 'https://maven.aliyun.com/repository/jcenter'}
+        maven { url 'https://maven.aliyun.com/repository/gradle-plugin' }
+
+
+        // 使用 Axelor 官方的 Repo 放在下面，以便补充缺少的 JAR
+        maven { url 'https://repository.axelor.com/nexus/public/' }
+
+        // 原始的 Maven 仓库放在最后，可以不用，因为阿里云的仓库是镜像同步的
+        /*
+        mavenCentral()
+        jcenter()
+        maven { url 'https://plugins.gradle.org/m2/'}
+        */
+    }
+    repositories repos
+    dependencies {
+        classpath 'com.axelor:axelor-gradle:5.3.0-SNAPSHOT'
+    }
+}
+
+allprojects {
+    repositories repos
+}
+
+apply plugin: 'com.axelor.app'
+
+axelor {
+    title = 'Demo 02'
+}
+
+allprojects {
+    apply plugin: 'idea'
+    group 'mingshu'
+    version '1.0-SNAPSHOT'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+}
+
+dependencies {
+    //compile project(":modules:sales")
+}
