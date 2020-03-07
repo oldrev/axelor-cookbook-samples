@@ -24,6 +24,7 @@ public class ReaderRepository extends AbstractReaderRepository {
             if (user != null) {
                 user.setReader(null);
                 _users.save(user);
+                _users.remove(user);
             }
         }
 

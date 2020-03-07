@@ -23,7 +23,7 @@
 
         <panel-tabs name="mainPanelTab">
             <panel title="借阅历史记录">
-                <panel-related field="borrowingList" colSpan="12" readonly="true" orderBy="borrowedOn">
+                <panel-related field="borrowingList" colSpan="12" readonly="true" orderBy="borrowTime">
                     <field name="code" />
                     <field name="book" />
                     <field name="borrowTime" />
