@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
+
+    <grid name="borrowing-grid" title="借阅列表" model="mingshu.librarian.db.Borrowing">
+        <field name="code" />
+        <field name="reader" />
+        <field name="book" />
+        <field name="borrowTime" />
+        <field name="days" />
+        <field name="returnTime" />
+        <field name="backTime" />
+        <field name="status" />
+    </grid>
+
+    <form name="borrowing-form" title="借阅表单" model="mingshu.librarian.db.Borrowing" onNew="action-borrowing-new" >
+        <panel>
+            <field name="status" showTitle="false" widget="nav-select" colSpan="12" readonly="true" />
+            <field name="code" />
+            <field name="reader" />
+            <field name="book" />
+            <field name="borrowTime" />
+            <field name="days" />
+            <field name="returnTime" required="false" showIf="status!='DRAFT'"/>
+            <field name="backTime" showIf="status=='DONE'"/>
+        </panel>
+
+        <panel name="actionsPanel" sidebar="true" stacked="true" title="操作">
+            <button name="confirmButton" title="确认借阅" colSpan="12" showIf="status=='DRAFT'"
+                    onClick="save,mingshu.librarian.web.BorrowingController:onConfirm" />
+            <button name="backButton" title="还书" colSpan="12" showIf="status=='WAIT'"
+                    onClick="save,mingshu.librarian.web.BorrowingController:onBack" />
+        </panel>
+
+    </form>
+
+
+    <action-record name="action-borrowing-new" model="mingshu.librarian.db.Borrowing">
+        <field name="borrowTime" expr="eval:__datetime__"/>
+        <field name="code" expr="call: mingshu.librarian.service.BorrowingService:getCode()" />
+    </action-record>
+
+
+</object-views>

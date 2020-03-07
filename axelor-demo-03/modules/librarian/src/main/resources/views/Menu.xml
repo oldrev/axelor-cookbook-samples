@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
+
+    <menuitem name="menu-librarian" title="图书管理系统" icon-background="#336699" />
+
+    <menuitem name="menu-book" title="图书管理" parent="menu-librarian" action="action.librarian.books" order="10" />
+
+    <action-view name="action.librarian.books" title="图书管理" model="mingshu.librarian.db.Book" >
+        <view type="grid" name="book-grid" />
+        <view type="form" name="book-form" />
+    </action-view>
+
+
+    <menuitem name="menu-reader" title="读者管理" parent="menu-librarian" action="action.librarian.readers" order="20" />
+
+    <action-view name="action.librarian.readers" title="图书管理" model="mingshu.librarian.db.Reader" >
+        <view type="grid" name="reader-grid" />
+        <view type="form" name="reader-form" />
+    </action-view>
+
+
+    <menuitem name="menu-borrowing" title="借阅列表" parent="menu-librarian" action="action.librarian.borrowings" order="30" />
+
+    <action-view name="action.librarian.borrowings" title="借阅列表" model="mingshu.librarian.db.Borrowing" >
+        <view type="grid" name="borrowing-grid" />
+        <view type="form" name="borrowing-form" />
+    </action-view>
+
+</object-views>
