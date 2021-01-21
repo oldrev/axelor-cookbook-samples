@@ -53,3 +53,8 @@ allprojects {
 dependencies {
     //compile project(":modules:sales")
 }
+
+wrapper {
+  gradleVersion = "5.6.4"
+}
+

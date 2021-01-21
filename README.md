@@ -19,7 +19,7 @@ https://github.com/axelor-l10n-cn
 # 编译环境需求
 
 * Java JDK8（必须 Java8）
-* Gradle 6.0+（必须）
+* Gradle 5.6+（必须，但必须 <= 6.3，6.4 无法运行）
 * Intellij IDEA（可选）
 
 # 命令行编译运行

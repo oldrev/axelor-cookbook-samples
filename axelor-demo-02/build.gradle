@@ -54,3 +54,7 @@ allprojects {
 dependencies {
     compile project(":modules:librarian")
 }
+
+wrapper {
+  gradleVersion = "5.6.4"
+}
