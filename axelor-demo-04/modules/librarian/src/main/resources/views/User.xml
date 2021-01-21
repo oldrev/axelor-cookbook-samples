@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
+
+    <!-- 扩展原始的用户视图，增加此模块新增的字段 -->
+    <form id="base-auth-user-form" name="user-form" title="用户" model="com.axelor.auth.db.User" extension="true">
+
+        <extend target="//field[@name='email']">
+            <insert position="after">
+                <field name="reader" />
+            </insert>
+        </extend>
+
+    </form>
+
+</object-views>

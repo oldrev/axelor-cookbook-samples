@@ -1,0 +1,60 @@
+<?xml version="1.0" ?>
+<domain-models xmlns="http://axelor.com/xml/ns/domain-models"
+               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+               xsi:schemaLocation="http://axelor.com/xml/ns/domain-models http://axelor.com/xml/ns/domain-models/domain-models_5.3.xsd">
+
+    <module name="librarian" package="mingshu.librarian.db" />
+
+    <sequence name="book.seq" initial="1" increment="1" padding="6" prefix="B"/>
+
+    <entity name="Book" table="BOOK" repository="abstract" sequential="true">
+        <string name="name" required="true" namecolumn="true" title="书名" />
+        <string name="code" sequence="book.seq" required="true" readonly="true" index="true" unique="true" min="7" max="7"
+                title="图书自编号" help="馆藏书籍的内部编号" />
+        <string name="isbn" required="true" title="ISBN" unique="true" />
+        <string name="summary" required="false" title="简介" large="true" />
+        <date name="publishDate" required="true" title="出版日期" />
+        <decimal name="price" required="true" title="价格"  precision="20" scale="2" />
+    </entity>
+
+
+    <entity name="Reader" table="READER" repository="abstract">
+        <string name="name" required="true" namecolumn="true" title="姓名" />
+        <string name="mobile" required="true" title="手机" unique="true" min="11" max="11" />
+        <binary name="photo"  title="读者照片" image="true" />
+        <one-to-one name="user" column="user_id" ref="com.axelor.auth.db.User" mappedBy="reader"
+                    readonly="true" title="用户" unique="true" />
+        <one-to-many name="borrowingList" ref="Borrowing" mappedBy="reader" title="借阅历史记录" readonly="true"/>
+        <string name="notes" large="true" title="备注" required="false" />
+    </entity>
+
+
+    <entity name="Borrowing" table="BORROWING" repository="default">
+        <string name="code" required="true" namecolumn="true" title="借阅编号" unique="true" index="true"
+                readonly="true" />
+        <many-to-one name="reader"  title="借阅者" ref="Reader" />
+        <integer name="days"  title="借阅天数" required="true" />
+        <datetime name="borrowTime"  title="借阅时间" required="true" />
+        <datetime name="returnTime"  title="应还书时间" required="true" readonly="true" >
+            <![CDATA[
+                if (days == null || borrowTime == null) {
+                    return null;
+                }
+                return getBorrowTime().plusDays(getDays());
+            ]]>
+        </datetime>
+        <datetime name="backTime" title="实际还书时间" required="false" readonly="true" />
+        <many-to-one name="book" title="图书" ref="Book" required="true" />
+        <enum name="status" ref="BorrowingStatus" required="true" title="借阅状态" default="DRAFT" readonly="true" />
+        <string name="notes" large="true" title="备注" required="false" />
+    </entity>
+
+    <enum name="BorrowingStatus">
+        <item name="DRAFT" value="draft" title="草稿" />
+        <item name="WAIT" value="wait" title="借阅中" />
+        <item name="DONE" value="done" title="完成" />
+        <item name="CANCELED" value="canceled" title="取消" />
+    </enum>
+
+
+</domain-models>

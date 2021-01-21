@@ -1,0 +1,3 @@
+rootProject.name = 'axelor-demo-04'
+
+include "modules:librarian"

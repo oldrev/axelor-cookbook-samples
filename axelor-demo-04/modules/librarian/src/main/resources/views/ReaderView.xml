@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<object-views xmlns="http://axelor.com/xml/ns/object-views"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://axelor.com/xml/ns/object-views http://axelor.com/xml/ns/object-views/object-views_5.3.xsd">
+
+    <grid name="reader-grid" title="读者列表" model="mingshu.librarian.db.Book">
+        <field name="name" />
+        <field name="mobile" />
+    </grid>
+
+    <form name="reader-form" title="读者表单" model="mingshu.librarian.db.Book">
+
+        <panel>
+            <panel colSpan="2">
+                <field name="photo" widget="Image" colSpan="12" />
+            </panel>
+            <panel title="读者基本信息" colSpan="10" itemSpan="6">
+                <field name="name" />
+                <field name="mobile" />
+                <field name="user" />
+            </panel>
+        </panel>
+
+        <panel-tabs name="mainPanelTab">
+            <panel title="借阅历史记录">
+                <panel-related field="borrowingList" colSpan="12" readonly="true" orderBy="borrowTime">
+                    <field name="code" />
+                    <field name="book" />
+                    <field name="borrowTime" />
+                    <field name="returnTime" />
+                    <field name="status" />
+                </panel-related>
+            </panel>
+            <panel title="备注">
+                <field name="notes" colSpan="12" />
+            </panel>
+        </panel-tabs>
+
+        <panel sidebar="true" stacked="true" title="操作">
+            <button name="assignUser" title="设置用户" colSpan="12"
+                    onClick="save,mingshu.librarian.web.ReaderController:onAssignUser" showIf="user == null"/>
+        </panel>
+
+    </form>
+
+
+</object-views>
