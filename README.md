@@ -1,10 +1,14 @@
 # axelor-cookbook-samples
 
-Axelor 教程代码范例仓库，本仓库保存“命叔炸机”视频专栏《Axelor 开发系列教程》的实例代码。
+Axelor 教程代码范例仓库，本仓库保存“命叔杂技”视频专栏《Axelor 开发系列教程》的实例代码。
+
+本项目的 `build.gradle` 中引用了作者提供的 Axelor 开发平台汉化版： 
+
+https://github.com/axelor-l10n-cn 
+
+请确保网络可以访问 GitHub 的内容，自己的项目可参考如何使用汉化版。
 
 任何问题可进 QQ 群 1048161339 讨论。
-
-**请注意，此 repo 根目录下的 `axelor-mvn-repo` 中包含的是汉化版 Axelor 的 JARs，被各个例子项目共享，请确保其和各个例子的相对路径是正确的。或者修改项目中的 `gradle.build` 构建脚本**
 
 # 视频教程在线观看：
 
@@ -18,6 +22,23 @@ Axelor 教程代码范例仓库，本仓库保存“命叔炸机”视频专栏�
 * Gradle 6.0+（必须）
 * Intellij IDEA（可选）
 
+# 命令行编译运行
+
+进入各个例子的目录，执行：
+
+## Windows
+
+```cmd
+.\gradlew.bat run
+```
+
+## Linux & MacOSX
+
+```bash
+./gradlew run
+```
+
+启动完成以后命令行日志会提示服务器 URL，用浏览器打开即可，默认用户名、密码：`admin`和`admin`。
 
 # FAQ
 

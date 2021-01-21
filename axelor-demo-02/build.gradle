@@ -1,14 +1,14 @@
 buildscript {
     ext.repos = {
 
-        // 这行放在上面，优先使用本地 `axelor-mvn-repo` 目录里提供的汉化过的 Axelor 框架
-        maven {
-            url uri("${projectDir}/../axelor-mvn-repo")
-        }
-
-
         // 最优先检查本地 Maven 仓库
         mavenLocal()
+
+        // 这行放在上面，优先使用命叔叔 Github 仓库提供的汉化过的 Axelor 框架
+        maven {
+            url uri("https://raw.githubusercontent.com/axelor-l10n-cn/axelor-open-platform-l10n-cn-mvn/master/mvn-repo")
+        }
+
 
         // 公共仓库优先使用阿里云的
         maven { url 'https://maven.aliyun.com/repository/central' }
